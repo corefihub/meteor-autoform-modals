@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'steedos:autoform-modals',
+  name: 'd3k4y:autoform-modals',
   summary: "Create, update and delete collections with modals",
-  version: "0.3.9_8",
-  git: "https://github.com/yogiben/meteor-autoform-modals"
+  version: "0.4.0",
+  git: "https://github.com/d3k4y/meteor-autoform-modals"
 });
 
 Package.on_use(function (api) {
@@ -15,7 +15,7 @@ Package.on_use(function (api) {
     'session',
     'coffeescript',
     'ui',
-    'aldeed:autoform@5.5.1',
+    'aldeed:autoform@6.0.0',
     'raix:handlebar-helpers@0.2.5',
     'mpowaga:string-template@0.1.0'
   ], 'client');
