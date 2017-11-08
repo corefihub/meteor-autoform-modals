@@ -15,7 +15,7 @@ Package.on_use(function (api) {
     'session',
     'coffeescript',
     'ui',
-    'aldeed:autoform@6.0.0',
+    'aldeed:autoform@6.0.0 || 5.0.0',
     'raix:handlebar-helpers@0.2.5',
     'mpowaga:string-template@0.1.0'
   ], 'client');
