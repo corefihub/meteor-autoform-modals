@@ -31,17 +31,14 @@ Template.autoformModals.rendered = ->
 			$('#afModal').modal 'hide'
 
 	$('#afModal').on 'show.bs.modal', ->
-		self.shouldUpdateQuickForm.set(true)
-
-
-	$('#afModal').on 'shown.bs.modal', ->
-		if Steedos?.setModalMaxHeight
-			Steedos.setModalMaxHeight()
-		$(window).bind 'keyup', onEscKey
-		
 		operation = Session.get 'cmOperation'
 		if operation == 'update'
 			AutoForm.resetForm(Session.get('cmFormId') or defaultFormId)
+		self.shouldUpdateQuickForm.set(true)
+		if Steedos?.setModalMaxHeight
+			Steedos.setModalMaxHeight()
+		$(window).bind 'keyup', onEscKey
+
 
 	$('#afModal').on 'hidden.bs.modal', ->
 		$(window).unbind 'keyup', onEscKey
