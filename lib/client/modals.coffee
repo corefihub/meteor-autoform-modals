@@ -75,7 +75,7 @@ Template.autoformModals.events
 	'click button:not(.close)': () ->
 		collection = Session.get 'cmCollection'
 		operation = Session.get 'cmOperation'
-		showRemoveButton = Session.get 'cmShowRemoveButton' 
+		showRemoveButton = Session.get 'cmShowRemoveButton'
 
 		if operation != 'insert'
 			_id = Session.get('cmDoc')._id
@@ -221,7 +221,9 @@ Template.afModal.events
 		else
 			Session.set 'cmPrompt', ''
 
-		$('#afModal').data('bs.modal').options.backdrop = t.data.backdrop or true
+		bsModal = $('#afModal').data('bs.modal');
+		bsModal.options = bsModal.options or {};
+		bsModal.options.backdrop = t.data.backdrop or true
 		$('#afModal').modal 'show'
 
 Template.autoformModals.onCreated ->
