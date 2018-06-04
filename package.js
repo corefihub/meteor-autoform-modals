@@ -1,7 +1,7 @@
 Package.describe({
   name: 'd3k4y:autoform-modals',
   summary: "Create, update and delete collections with modals",
-  version: "0.4.1",
+  version: "0.4.2",
   git: "https://github.com/d3k4y/meteor-autoform-modals"
 });
 

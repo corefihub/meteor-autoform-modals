@@ -61,6 +61,7 @@ Template.autoformModals.rendered = ->
 			'cmFormId',
 			'cmAutoformType',
 			'cmMeteorMethod',
+			'cmMeteorUpdateMethod',
 			'cmCloseButtonContent',
 			'cmCloseButtonClasses',
 			'cmShowRemoveButton'
@@ -134,6 +135,8 @@ helpers =
 	cmFormId: () ->
 		Session.get('cmFormId') or defaultFormId
 	cmAutoformType: () ->
+		if Session.get 'cmMeteorUpdateMethod'
+			'method-update'
 		if Session.get 'cmMeteorMethod'
 			'method'
 		else
@@ -144,6 +147,8 @@ helpers =
 		Session.get 'cmModalContentClass'
 	cmMeteorMethod: () ->
 		Session.get 'cmMeteorMethod'
+	cmMeteorUpdateMethod: () ->
+		Session.get 'cmMeteorUpdateMethod'
 	title: () ->
 		StringTemplate.compile '{{{cmTitle}}}', helpers
 	prompt: () ->
@@ -178,6 +183,7 @@ Template.afModal.events
 		Session.set 'cmPlaceholder', if t.data.placeholder is true then 'schemaLabel' else ''
 		Session.set 'cmFormId', t.data.formId
 		Session.set 'cmMeteorMethod', t.data.meteormethod
+		Session.set 'cmMeteorUpdateMethod', t.data.meteorupdatemethod
 		Session.set 'cmModalDialogClass', t.data.dialogClass
 		Session.set 'cmModalContentClass', t.data.contentClass
 		Session.set 'cmShowRemoveButton', t.data.showRemoveButton or false
