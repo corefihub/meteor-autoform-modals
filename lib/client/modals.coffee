@@ -52,6 +52,10 @@ Template.autoformModals.rendered = ->
 			'cmOmitFields',
 			'cmButtonContent',
 			'cmTitle',
+			'cmCallContext',
+			'cmDoNotClean',
+			'cmValidationScope',
+			'cmValidation',
 			'cmButtonClasses',
 			'cmPrompt',
 			'cmTemplate',
@@ -61,6 +65,7 @@ Template.autoformModals.rendered = ->
 			'cmFormId',
 			'cmAutoformType',
 			'cmMeteorMethod',
+			'cmMeteorMethodArgs',
 			'cmMeteorUpdateMethod',
 			'cmCloseButtonContent',
 			'cmCloseButtonClasses',
@@ -118,6 +123,14 @@ helpers =
 		Session.get 'cmCloseButtonContent'
 	cmTitle: () ->
 		Session.get 'cmTitle'
+	cmCallContext: () ->
+		Session.get 'cmCallContext'
+	cmDoNotClean: () ->
+		Session.get 'cmDoNotClean'
+	cmValidationScope: () ->
+		Session.get 'cmValidationScope'
+	cmValidation: () ->
+		Session.get 'cmValidation'
 	cmButtonClasses: () ->
 		Session.get 'cmButtonClasses'
 	cmCloseButtonClasses: () ->
@@ -135,9 +148,11 @@ helpers =
 	cmFormId: () ->
 		Session.get('cmFormId') or defaultFormId
 	cmAutoformType: () ->
-		if Session.get 'cmMeteorUpdateMethod'
+		if (Session.get 'cmMeteorUpdateMethod') == 'enhancedmethod'
+			'enhancedmethod'
+		else if Session.get 'cmMeteorUpdateMethod'
 			'method-update'
-		if Session.get 'cmMeteorMethod'
+		else if Session.get 'cmMeteorMethod'
 			'method'
 		else
 			Session.get 'cmOperation'
@@ -147,6 +162,8 @@ helpers =
 		Session.get 'cmModalContentClass'
 	cmMeteorMethod: () ->
 		Session.get 'cmMeteorMethod'
+	cmMeteorMethodArgs: () ->
+		Session.get 'cmMeteorMethodArgs'
 	cmMeteorUpdateMethod: () ->
 		Session.get 'cmMeteorUpdateMethod'
 	title: () ->
@@ -177,12 +194,17 @@ Template.afModal.events
 		Session.set 'cmOmitFields', t.data.omitFields
 		Session.set 'cmButtonHtml', html
 		Session.set 'cmTitle', t.data.title or html
+		Session.set 'cmCallContext', t.data.callContext
+		Session.set 'cmDoNotClean', t.data.doNotClean
+		Session.set 'cmValidationScope', t.data.validationScope
+		Session.set 'cmValidation', t.data.validation or 'blur'
 		Session.set 'cmTemplate', t.data.template
 		Session.set 'cmLabelClass', t.data.labelClass or t.data['label-class']
 		Session.set 'cmInputColClass', t.data.inputColClass or t.data['input-col-class']
 		Session.set 'cmPlaceholder', if t.data.placeholder is true then 'schemaLabel' else ''
 		Session.set 'cmFormId', t.data.formId
 		Session.set 'cmMeteorMethod', t.data.meteormethod
+		Session.set 'cmMeteorMethodArgs', t.data.meteormethodargs
 		Session.set 'cmMeteorUpdateMethod', t.data.meteorupdatemethod
 		Session.set 'cmModalDialogClass', t.data.dialogClass
 		Session.set 'cmModalContentClass', t.data.contentClass
