@@ -69,7 +69,8 @@ Template.autoformModals.rendered = ->
 			'cmMeteorUpdateMethod',
 			'cmCloseButtonContent',
 			'cmCloseButtonClasses',
-			'cmShowRemoveButton'
+			'cmShowRemoveButton',
+			'cmBeforeTemplateName'
 		]
 		delete Session.keys[key] for key in sessionKeys
 
@@ -176,7 +177,8 @@ helpers =
 		StringTemplate.compile '{{{cmCloseButtonContent}}}', helpers
 	cmShowRemoveButton: () ->
 		Session.get 'cmShowRemoveButton'
-
+	cmBeforeTemplateName: () ->
+		Session.get 'cmBeforeTemplateName'
 	shouldUpdateQuickForm: () ->
 		return Template.instance()?.shouldUpdateQuickForm.get()
 
@@ -209,6 +211,7 @@ Template.afModal.events
 		Session.set 'cmModalDialogClass', t.data.dialogClass
 		Session.set 'cmModalContentClass', t.data.contentClass
 		Session.set 'cmShowRemoveButton', t.data.showRemoveButton or false
+		Session.set 'cmBeforeTemplateName', t.data.beforeTemplateName
 		cmOnSuccessCallback = t.data.onSuccess
 
 		if not _.contains registeredAutoFormHooks, t.data.formId
