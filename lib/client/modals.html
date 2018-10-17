@@ -8,7 +8,7 @@
 				</div>
 
 				<div class="modal-body">
-					{{> Template.dynamic template=cmBeforeTemplateName data=this}}
+					{{> Template.dynamic template=cmBeforeTemplateName data=cmCallContext}}
 					<!-- beforeTemplate -->
 					{{#if $and cmCollection cmOperation}}
 						<p>{{{prompt}}}</p>
