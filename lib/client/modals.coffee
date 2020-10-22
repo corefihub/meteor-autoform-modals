@@ -214,7 +214,7 @@ Template.afModal.events
 		Session.set 'cmBeforeTemplateName', t.data.beforeTemplateName
 		cmOnSuccessCallback = t.data.onSuccess
 
-		if not _.contains registeredAutoFormHooks, t.data.formId
+		if not registeredAutoFormHooks.includes t.data.formId
 			AutoForm.addHooks t.data.formId,
 				onSuccess: ->
 					$('#afModal').modal 'hide'

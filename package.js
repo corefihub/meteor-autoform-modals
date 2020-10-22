@@ -1,27 +1,30 @@
 Package.describe({
-  name: 'd3k4y:autoform-modals',
-  summary: "Create, update and delete collections with modals",
-  version: "0.4.8",
-  git: "https://github.com/d3k4y/meteor-autoform-modals"
+    name: 'sebl29:autoform-modals',
+    summary: "Create, update and delete collections with modals",
+    version: "0.5.0",
+    git: "https://github.com/sebl29/meteor-autoform-modals",
 });
 
-Package.on_use(function (api) {
-  api.versionsFrom('METEOR@1.2.0.1');
+Package.onUse(function (api) {
+    api.versionsFrom('1.11.1');
 
-  api.use([
-    'jquery',
-    'templating',
-    'less@2.5.0_2',
-    'session',
-    'coffeescript@2.3.2',
-    'underscore',
-    'ui',
-    'aldeed:autoform@6.0.0 || 5.0.0',
-    'raix:handlebar-helpers@0.2.5',
-    'mpowaga:string-template@0.1.0',
-  ], 'client');
+    api.use([
+        // 'ecmascript',
+        'jquery@1.11.11',
+        'blaze-html-templates@1.1.2',
+        'less@2.8.0',
+        'session',
+        'coffeescript@2.4.1',
+        // 'underscore',
+        // 'ui',
+        'aldeed:autoform@6.3.0',
+        'raix:handlebar-helpers@0.2.5', // TODO remove this unmaintained package!!
+        'mpowaga:string-template@0.1.0', // TODO remove this package!! makes use of "eval"!!!
+    ], 'client');
 
-  api.add_files('lib/client/modals.html', 'client');
-  api.add_files('lib/client/modals.coffee', 'client');
-  api.add_files('lib/client/modals.less', 'client');
+    api.addFiles([
+        'lib/client/modals.html',
+        'lib/client/modals.less',
+        'lib/client/modals.coffee',
+    ], 'client');
 });
