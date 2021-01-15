@@ -1,18 +1,17 @@
 Package.describe({
-    name: 'sebl29:autoform-modals',
+    name: 'corefihub:autoform-modals',
     summary: "Create, update and delete collections with modals",
-    version: "0.5.0",
-    git: "https://github.com/sebl29/meteor-autoform-modals",
+    version: "0.5.1",
+    git: "https://github.com/corefihub/meteor-autoform-modals",
 });
 
 Package.onUse(function (api) {
-    api.versionsFrom('1.11.1');
+    api.versionsFrom('1.12.1');
 
     api.use([
         // 'ecmascript',
-        'jquery@1.11.11',
         'blaze-html-templates@1.1.2',
-        'less@2.8.0',
+        'less@3.0.1',
         'session',
         'coffeescript@2.4.1',
         // 'underscore',
