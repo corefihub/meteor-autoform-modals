@@ -252,6 +252,9 @@ Template.afModal.events
 		else
 			Session.set 'cmPrompt', ''
 
+		if $('#afModal').length == 0
+			throw new Meteor.Error('#afModal not found', 'Maybe missing inclusion of template: {{> autoformModals}}');
+
 		bsModal = $('#afModal').data('bs.modal');
 		bsModal.options = bsModal.options or {};
 		bsModal.options.backdrop = t.data.backdrop or true
